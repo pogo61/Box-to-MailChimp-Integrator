@@ -1,0 +1,33 @@
+#%RAML 0.8
+title: Box to MailChimp Integrator
+version: 1.0
+baseUri: http://localhost:9905/mailchimp_int
+/prospects:
+  post:
+    description: <<loads a CSV of prospects into MailChimp from Box>>
+    body:
+      application/json:
+        schema: |
+          {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "http://jsonschema.net",
+            "type": "object",
+            "properties": {
+              "apikey": {
+                "id": "http://jsonschema.net/apikey",
+                "type": "string"
+              },
+              "file": {
+                "id": "http://jsonschema.net/file",
+                "type": "string"
+              }
+            },
+            "required": [
+              "apikey",
+              "file"
+            ]
+          }
+    responses:
+      200:
+        body:
+          application/json:
